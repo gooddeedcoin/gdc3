@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both dagrad and dagra-qt, to make it harder for attackers to
+ * for both gdcd and gdc-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Dagra Core");
+const std::string CLIENT_NAME("Gdc Core");
 
 /**
  * Client version number

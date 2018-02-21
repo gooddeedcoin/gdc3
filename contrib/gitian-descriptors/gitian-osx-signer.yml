@@ -1,5 +1,5 @@
 ---
-name: "dagra-dmg-signer"
+name: "gdc-dmg-signer"
 suites:
 - "precise"
 architectures:
@@ -10,7 +10,7 @@ packages:
 reference_datetime: "2013-06-01 00:00:00"
 remotes: []
 files:
-- "dagra-osx-unsigned.tar.gz"
+- "gdc-osx-unsigned.tar.gz"
 - "signature.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
@@ -28,10 +28,10 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=dagra-osx-unsigned.tar.gz
-  SIGNED=dagra-osx-signed.dmg
+  UNSIGNED=gdc-osx-unsigned.tar.gz
+  SIGNED=gdc-osx-signed.dmg
 
   tar -xf ${UNSIGNED}
   ./detached-sig-apply.sh ${UNSIGNED} signature.tar.gz
-  ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "Dagra-Qt" -no-pad -r -apple -o uncompressed.dmg signed-app
+  ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "Gdc-Qt" -no-pad -r -apple -o uncompressed.dmg signed-app
   ${WRAP_DIR}/dmg dmg uncompressed.dmg ${OUTDIR}/${SIGNED}

@@ -668,16 +668,16 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
     border: 0;
 }
 
-/* About Dagra Dialog */
+/* About Gdc Dialog */
 QDialog#AboutDialog {
     background-color: #d9dfe4;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Dagra Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Gdc Contents */
     margin-left: 10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About Dagra text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About Gdc text */
     margin-right: 10px;
 }
 

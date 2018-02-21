@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dagra developers
+// Copyright (c) 2018-2018 The Gdc developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dagra-config.h"
+#include "config/gdc-config.h"
 #endif
 
 #include "util.h"
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     // Don't remove this, it's needed to access
     // QCoreApplication:: in the tests
     QCoreApplication app(argc, argv);
-    app.setApplicationName("Dagra-Qt-test");
+    app.setApplicationName("Gdc-Qt-test");
 
     URITests test1;
     if (QTest::qExec(&test1) != 0)

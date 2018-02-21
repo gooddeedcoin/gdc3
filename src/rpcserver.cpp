@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dagra developers
+// Copyright (c) 2018-2018 The Gdc developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -229,10 +229,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Dagra server.");
+            "\nStop Gdc server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "Dagra server stopping";
+    return "Gdc server stopping";
 }
 
 
@@ -308,16 +308,16 @@ static const CRPCCommand vRPCCommands[] =
     { "hidden",             "reconsiderblock",        &reconsiderblock,        true,      true,       false },
     { "hidden",             "setmocktime",            &setmocktime,            true,      false,      false },
 
-    /* Dagra features */
-    { "dagra",               "masternode",             &masternode,             true,      true,       false },
-    { "dagra",               "masternodelist",         &masternodelist,         true,      true,       false },
-    { "dagra",               "mnbudget",               &mnbudget,               true,      true,       false },
-    { "dagra",               "mnbudgetvoteraw",        &mnbudgetvoteraw,        true,      true,       false },
-    { "dagra",               "mnfinalbudget",          &mnfinalbudget,          true,      true,       false },
-    { "dagra",               "mnsync",                 &mnsync,                 true,      true,       false },
-    { "dagra",               "spork",                  &spork,                  true,      true,       false },
+    /* Gdc features */
+    { "gdc",               "masternode",             &masternode,             true,      true,       false },
+    { "gdc",               "masternodelist",         &masternodelist,         true,      true,       false },
+    { "gdc",               "mnbudget",               &mnbudget,               true,      true,       false },
+    { "gdc",               "mnbudgetvoteraw",        &mnbudgetvoteraw,        true,      true,       false },
+    { "gdc",               "mnfinalbudget",          &mnfinalbudget,          true,      true,       false },
+    { "gdc",               "mnsync",                 &mnsync,                 true,      true,       false },
+    { "gdc",               "spork",                  &spork,                  true,      true,       false },
 #ifdef ENABLE_WALLET
-    { "dagra",               "darksend",               &darksend,               false,     false,      true  }, /* not threadSafe because of SendMoney */
+    { "gdc",               "darksend",               &darksend,               false,     false,      true  }, /* not threadSafe because of SendMoney */
 
     /* Wallet */
     { "wallet",             "addmultisigaddress",     &addmultisigaddress,     true,      false,      true },
@@ -586,16 +586,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-            _("To use dagrad, or the -server option to dagra-qt, you must set an rpcpassword in the configuration file:\n"
+            _("To use gdcd, or the -server option to gdc-qt, you must set an rpcpassword in the configuration file:\n"
               "%s\n"
               "It is recommended you use the following random password:\n"
-              "rpcuser=dagrarpc\n"
+              "rpcuser=gdcrpc\n"
               "rpcpassword=%s\n"
               "(you do not need to remember this password)\n"
               "The username and password MUST NOT be the same.\n"
               "If the file does not exist, create it with owner-readable-only file permissions.\n"
               "It is also recommended to set alertnotify so you are notified of problems;\n"
-              "for example: alertnotify=echo %%s | mail -s \"Dagra Alert\" admin@foo.com\n"),
+              "for example: alertnotify=echo %%s | mail -s \"Gdc Alert\" admin@foo.com\n"),
                 GetConfigFile().string(),
                 EncodeBase58(&rand_pwd[0],&rand_pwd[0]+32)),
                 "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -1046,7 +1046,7 @@ json_spirit::Value CRPCTable::execute(const std::string &strMethod, const json_s
 }
 
 std::string HelpExampleCli(string methodname, string args){
-    return "> dagra-cli " + methodname + " " + args + "\n";
+    return "> gdc-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args){

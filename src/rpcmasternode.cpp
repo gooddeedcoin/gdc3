@@ -34,7 +34,7 @@ void SendMoney(const CTxDestination &address, CAmount nValue, CWalletTx& wtxNew,
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
     }
 
-    // Parse Dagra address
+    // Parse Gdc address
     CScript scriptPubKey = GetScriptForDestination(address);
 
     // Create and send the transaction
@@ -55,8 +55,8 @@ Value darksend(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() == 0)
         throw runtime_error(
-            "darksend <dagraaddress> <amount>\n"
-            "dagraaddress, reset, or auto (AutoDenominate)"
+            "darksend <gdcaddress> <amount>\n"
+            "gdcaddress, reset, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1"
             + HelpRequiringPassphrase());
 
@@ -77,14 +77,14 @@ Value darksend(const Array& params, bool fHelp)
 
     if (params.size() != 2)
         throw runtime_error(
-            "darksend <dagraaddress> <amount>\n"
-            "dagraaddress, denominate, or auto (AutoDenominate)"
+            "darksend <gdcaddress> <amount>\n"
+            "gdcaddress, denominate, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1"
             + HelpRequiringPassphrase());
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dagra address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Gdc address");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -140,7 +140,7 @@ Value masternode(const Array& params, bool fHelp)
                 "  genkey       - Generate new masternodeprivkey\n"
                 "  enforce      - Enforce masternode payments\n"
                 "  outputs      - Print masternode compatible outputs\n"
-                "  start        - Start masternode configured in dagra.conf\n"
+                "  start        - Start masternode configured in gdc.conf\n"
                 "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
                 "  start-<mode> - Start masternodes configured in masternode.conf (<mode>: 'all', 'missing', 'disabled')\n"
                 "  status       - Print masternode status information\n"

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dagra developers
+// Copyright (c) 2018-2018 The Gdc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,9 +19,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(DAGRA);
-    unitlist.append(mDAGRA);
-    unitlist.append(uDAGRA);
+    unitlist.append(GDc);
+    unitlist.append(mGDc);
+    unitlist.append(uGDc);
     unitlist.append(duffs);
     return unitlist;
 }
@@ -30,9 +30,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case DAGRA:
-    case mDAGRA:
-    case uDAGRA:
+    case GDc:
+    case mGDc:
+    case uGDc:
     case duffs:
         return true;
     default:
@@ -44,9 +44,9 @@ QString BitcoinUnits::id(int unit)
 {
     switch(unit)
     {
-        case DAGRA: return QString("dagra");
-        case mDAGRA: return QString("mdagra");
-        case uDAGRA: return QString::fromUtf8("udagra");
+        case GDc: return QString("gdc");
+        case mGDc: return QString("mgdc");
+        case uGDc: return QString::fromUtf8("ugdc");
         case duffs: return QString("duffs");
         default: return QString("???");
     }
@@ -58,9 +58,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case DAGRA: return QString("DAGRA");
-            case mDAGRA: return QString("mDAGRA");
-            case uDAGRA: return QString::fromUtf8("μDAGRA");
+            case GDc: return QString("GDc");
+            case mGDc: return QString("mGDc");
+            case uGDc: return QString::fromUtf8("μGDc");
             case duffs: return QString("duffs");
             default: return QString("???");
         }
@@ -69,9 +69,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case DAGRA: return QString("tDAGRA");
-            case mDAGRA: return QString("mtDAGRA");
-            case uDAGRA: return QString::fromUtf8("μtDAGRA");
+            case GDc: return QString("tGDc");
+            case mGDc: return QString("mtGDc");
+            case uGDc: return QString::fromUtf8("μtGDc");
             case duffs: return QString("tduffs");
             default: return QString("???");
         }
@@ -84,10 +84,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case DAGRA: return QString("Dagra");
-            case mDAGRA: return QString("Milli-Dagra (1 / 1" THIN_SP_UTF8 "000)");
-            case uDAGRA: return QString("Micro-Dagra (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-Dagra (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case GDc: return QString("Gdc");
+            case mGDc: return QString("Milli-Gdc (1 / 1" THIN_SP_UTF8 "000)");
+            case uGDc: return QString("Micro-Gdc (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-Gdc (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -95,10 +95,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case DAGRA: return QString("TestDagras");
-            case mDAGRA: return QString("Milli-TestDagra (1 / 1" THIN_SP_UTF8 "000)");
-            case uDAGRA: return QString("Micro-TestDagra (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestDagra (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case GDc: return QString("TestGdcs");
+            case mGDc: return QString("Milli-TestGdc (1 / 1" THIN_SP_UTF8 "000)");
+            case uGDc: return QString("Micro-TestGdc (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestGdc (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -108,9 +108,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case DAGRA:  return 100000000;
-    case mDAGRA: return 100000;
-    case uDAGRA: return 100;
+    case GDc:  return 100000000;
+    case mGDc: return 100000;
+    case uGDc: return 100;
     case duffs: return 1;
     default:   return 100000000;
     }
@@ -120,9 +120,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case DAGRA: return 8;
-    case mDAGRA: return 5;
-    case uDAGRA: return 2;
+    case GDc: return 8;
+    case mGDc: return 5;
+    case uGDc: return 2;
     case duffs: return 0;
     default: return 0;
     }

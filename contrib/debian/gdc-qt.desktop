@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gdc
+Comment=Gdc P2P Cryptocurrency
+Comment[fr]=Gdc, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Gdc, eşten eşe kriptografik sanal para birimi
+Exec=gdc-qt %u
+Terminal=false
+Type=Application
+Icon=gdc128
+MimeType=x-scheme-handler/gdc;
+Categories=Office;Finance;

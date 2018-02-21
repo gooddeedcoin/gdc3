@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. dagra_test
+	$(MAKE) -C .. gdc_test
 clean:
-	$(MAKE) -C .. dagra_test_clean
+	$(MAKE) -C .. gdc_test_clean
 check:
-	$(MAKE) -C .. dagra_test_check
+	$(MAKE) -C .. gdc_test_check
