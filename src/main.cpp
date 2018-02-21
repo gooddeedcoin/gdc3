@@ -1542,7 +1542,7 @@ int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
     if(nHeight > 4500 || Params().NetworkID() == CBaseChainParams::TESTNET) dDiff = ConvertBitsToDouble(nBits);
 
     int64_t nSubsidy = 0;
-    if(nHeight >= 5465) {
+   /* if(nHeight >= 5) {
         if((nHeight >= 17000 && dDiff > 75) || nHeight >= 24000) { // GPU/ASIC difficulty calc
             // 2222222/(((x+2600)/9)^2)
             nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
@@ -1555,12 +1555,37 @@ int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
         }
     } else {
         nSubsidy = (1111.0 / (pow((dDiff+1.0),2.0)));
-        if (nSubsidy > 500) nSubsidy = 500;
+        if (nSubsidy > 500) nSubsidy = 6000000;
         if (nSubsidy < 1) nSubsidy = 1;
+    } */
+ if(nHeight >= 1) {
+    nSubsidy = 1;
+    if(nHeight >= 5) {
+        nSubsidy = 50;
     }
+    if(nHeight >= 10) {
+        nSubsidy = 100;
+    }
+    if(nHeight >= 15) {
+        nSubsidy = 150;
+    }
+    if(nHeight >= 20) {
+        nSubsidy = 200;
+    }
+    if(nHeight >= 25) {
+        nSubsidy = 250;
+    }
+    if(nHeight >= 24639801) {
+        nSubsidy = 0;
+    }        
+} else {
+    nSubsidy = 500000;
+} 
+
 
     // LogPrintf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
     nSubsidy *= COIN;
+ //   nSubsidy /= 100;
 
     if(Params().NetworkID() == CBaseChainParams::TESTNET){
         for(int i = 46200; i <= nHeight; i += 210240) nSubsidy -= nSubsidy/14;
@@ -1586,7 +1611,7 @@ int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
-    int64_t ret = blockValue/5; // start at 20%
+    int64_t ret = blockValue/4; // start at 25%
 
     if(Params().NetworkID() == CBaseChainParams::TESTNET) {
         if(nHeight > 46000)             ret += blockValue / 20; //25% - 2014-10-07
@@ -1598,7 +1623,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
         if(nHeight > 46000+((576*1)*6)) ret += blockValue / 20; //55% - 2014-10-13
         if(nHeight > 46000+((576*1)*7)) ret += blockValue / 20; //60% - 2014-10-14
     }
-
+/*
     if(nHeight > 158000)               ret += blockValue / 20; // 158000 - 25.0% - 2014-10-24
     if(nHeight > 158000+((576*30)* 1)) ret += blockValue / 20; // 175280 - 30.0% - 2014-11-25
     if(nHeight > 158000+((576*30)* 2)) ret += blockValue / 20; // 192560 - 35.0% - 2014-12-26
